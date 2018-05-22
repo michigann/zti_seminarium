@@ -45,8 +45,8 @@ task startTomcat(type: Exec) {
 
 task deployOnTomcat() {
 	finalizedBy startTomcat
+	dependsOn copyWarToTomcat
 }
-deployOnTomcat.dependsOn copyWarToTomcat
 
 task stopTomcat(type: Exec) {
 	description 'Stops local Tomcat server'
