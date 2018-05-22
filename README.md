@@ -1,1 +1,3 @@
-# zti_seminarium
+# Zaawansowane technologie internetowe
+
+Seminarium: automatyzacja procesu budowy oprogramowania
