@@ -1,15 +1,15 @@
 plugins {
-    id 'war'  
+	id 'war'  
 }
 
 repositories {
-    jcenter()
+	jcenter()
 }
 
 dependencies {
-    compile 'javax.servlet:javax.servlet-api:3.1.0'
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:2.7.19' 
+	compile 'javax.servlet:javax.servlet-api:3.1.0'
+	testCompile 'junit:junit:4.12'
+	testCompile 'org.mockito:mockito-core:2.7.19' 
 }
 
 
@@ -18,15 +18,15 @@ dependencies {
 task copyWarToTomcat(type: Copy) {
 	description "Copies ${rootProject.name}.war into local Tomcat server"
 	
-    from "build/libs/${rootProject.name}.war"
-    into "C:/Programs/apache-tomcat-8.5.28/webapps"
+	from "build/libs/${rootProject.name}.war"
+	into "C:/Programs/apache-tomcat-8.5.28/webapps"
     
 	doFirst {
 		println "Copying ${rootProject.name}.war into server..."
-    }
+	}
 	doLast {
 		println "${rootProject.name}.war file has been copied"
-    }
+	}
 }
 
 task startTomcat(type: Exec) {
@@ -34,13 +34,13 @@ task startTomcat(type: Exec) {
 	
 	workingDir 'C:/Programs/apache-tomcat-8.5.28/bin'
 	commandLine 'cmd', '/C', 'startup.bat'
-	
+    
 	doFirst {
 		println "Starting Tomcat..."
 	}
-    doLast {
-    	println 'Tomcat has been started.'
-    }
+	doLast {
+		println 'Tomcat has been started.'
+	}
 }
 
 task deployOnTomcat() {
@@ -51,13 +51,13 @@ task deployOnTomcat() {
 task stopTomcat(type: Exec) {
 	description 'Stops local Tomcat server'
 	
-    workingDir 'C:/Programs/apache-tomcat-8.5.28/bin'
-    commandLine 'cmd', '/C', 'shutdown.bat'
+	workingDir 'C:/Programs/apache-tomcat-8.5.28/bin'
+	commandLine 'cmd', '/C', 'shutdown.bat'
     
-    doFirst {
-        println 'Stopping Tomcat...'
-    }
-    doLast {
-        println 'Tomcat has been stopped'
-    }
+	doFirst {
+		println 'Stopping Tomcat...'
+	}
+	doLast {
+		println 'Tomcat has been stopped'
+	}
 }
